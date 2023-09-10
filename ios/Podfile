@@ -1,5 +1,6 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native-permissions/scripts/setup'
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
@@ -27,6 +28,8 @@ target 'AwesomeProject' do
   # Flags change depending on the env values.
   flags = get_default_flags()
 
+  pod 'GoogleUtilities', :modular_headers => true;
+
   use_react_native!(
     :path => config[:reactNativePath],
     # Hermes is now enabled by default. Disable by setting this flag to false.
@@ -42,6 +45,27 @@ target 'AwesomeProject' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  setup_permissions([
+    'AppTrackingTransparency',
+    'BluetoothPeripheral',
+    'Calendars',
+    'Camera',
+    'Contacts',
+    'FaceID',
+    'LocationAccuracy',
+    'LocationAlways',
+    'LocationWhenInUse',
+    'MediaLibrary',
+    'Microphone',
+    'Motion',
+    'Notifications',
+    'PhotoLibrary',
+    'PhotoLibraryAddOnly',
+    'Reminders',
+    'SpeechRecognition',
+    'StoreKit'
+  ])
 
   target 'AwesomeProjectTests' do
     inherit! :complete

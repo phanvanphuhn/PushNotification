@@ -18,6 +18,7 @@
     "react-hook-form": "^7.43.9",
     "react-native": "0.71.8",
     "react-native-config": "^1.5.1",
+    "react-native-permissions": "^3.9.0",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
